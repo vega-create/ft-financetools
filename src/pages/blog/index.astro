@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SEO from '../../components/SEO.astro';
+import { getCollection } from 'astro:content';
+const posts = (await getCollection('posts')).filter(p => new Date(p.data.publishDate) <= new Date()).sort((a,b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime());
+---
+<BaseLayout><SEO slot="head" title="Finance Blog" description="Personal finance tips, guides, and strategies." />
+  <div class="max-w-4xl mx-auto px-4 py-10">
+    <header class="mb-10"><h1 class="text-3xl font-bold text-gray-900">💰 Finance Blog</h1><p class="text-gray-600 mt-2">Personal finance tips, guides, and strategies.</p></header>
+    <div class="space-y-6">
+      {posts.map(post => (
+        <a href={`/blog/${post.id}/`} class="block bg-white rounded-xl border border-gray-100 p-6 hover:shadow-md hover:border-emerald-200 transition-all group">
+          <div class="flex items-center gap-3 mb-2"><span class="px-2 py-0.5 bg-emerald-50 text-emerald-700 text-xs font-medium rounded-full uppercase">{post.data.category}</span><time datetime={post.data.publishDate} class="text-xs text-gray-400">{new Date(post.data.publishDate).toLocaleDateString('en-US',{year:'numeric',month:'short',day:'numeric'})}</time></div>
+          <h2 class="text-xl font-semibold text-gray-900 group-hover:text-emerald-700">{post.data.title}</h2>
+          <p class="text-gray-600 mt-2 text-sm line-clamp-2">{post.data.description}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</BaseLayout>
