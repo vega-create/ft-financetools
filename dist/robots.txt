@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://finance-tools.freetoolkit.cc/sitemap-index.xml
