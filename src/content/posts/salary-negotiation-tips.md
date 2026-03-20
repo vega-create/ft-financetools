@@ -14,8 +14,6 @@ faq:
   - q: "Are there free tools to help with salary negotiation tips?"
     a: "Yes! Our finance-tools.freetoolkit.cc offers free calculators for budgeting, compound interest, mortgages, ROI, and more. No sign-up required."
 ---
-
-<div style="margin: 2rem 0; background: #f0fdf4; border-radius: 12px; padding: 1.2rem; border: 1px solid #bbf7d0;"><div style="font-weight: 700; font-size: 0.85rem; color: #166534; margin-bottom: 0.8rem;">A $5K Raise Compounds Over Time</div><div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.4rem;"><div style="background: white; padding: 0.5rem; border-radius: 8px; text-align: center; border: 1px solid #bbf7d0;"><div style="font-size: 0.6rem; color: #6b7280;">Year 1</div><div style="font-weight: 800; color: #16a34a;">+$5K</div></div><div style="background: white; padding: 0.5rem; border-radius: 8px; text-align: center; border: 1px solid #bbf7d0;"><div style="font-size: 0.6rem; color: #6b7280;">5 years</div><div style="font-weight: 800; color: #16a34a;">+$28K</div></div><div style="background: white; padding: 0.5rem; border-radius: 8px; text-align: center; border: 1px solid #bbf7d0;"><div style="font-size: 0.6rem; color: #6b7280;">10 years</div><div style="font-weight: 800; color: #16a34a;">+$63K</div></div><div style="background: #166534; padding: 0.5rem; border-radius: 8px; text-align: center;"><div style="font-size: 0.6rem; color: #bbf7d0;">20 years</div><div style="font-weight: 800; color: white;">+$160K</div></div></div></div>
 Most people leave money on the table by not negotiating their salary. Understanding your numbers gives you confidence and leverage.
 
 ## Know Your Market Rate

@@ -14,8 +14,6 @@ faq:
   - q: "Are there free tools to help with emergency fund guide?"
     a: "Yes! Our finance-tools.freetoolkit.cc offers free calculators for budgeting, compound interest, mortgages, ROI, and more. No sign-up required."
 ---
-
-<div style="margin: 2rem 0; background: #f8fafc; border-radius: 12px; padding: 1.2rem; border: 1px solid #e2e8f0;"><div style="font-weight: 700; font-size: 0.85rem; color: #334155; margin-bottom: 0.8rem;">Emergency Fund Targets (at $3K/mo expenses)</div><div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.4rem;"><div style="width: 33%; background: #f59e0b; padding: 0.4rem 0.6rem; border-radius: 6px; font-size: 0.75rem; font-weight: 600; color: white;">3 months: $9,000</div></div><div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.4rem;"><div style="width: 66%; background: #22c55e; padding: 0.4rem 0.6rem; border-radius: 6px; font-size: 0.75rem; font-weight: 600; color: white;">6 months: $18,000 ← Recommended</div></div><div style="display: flex; align-items: center; gap: 0.5rem;"><div style="width: 100%; background: #166534; padding: 0.4rem 0.6rem; border-radius: 6px; font-size: 0.75rem; font-weight: 600; color: white;">12 months: $36,000 (freelancers)</div></div></div>
 An emergency fund is the foundation of financial security. Without one, a single unexpected expense can derail your finances.
 
 ## How Much to Save

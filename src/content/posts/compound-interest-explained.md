@@ -14,8 +14,6 @@ faq:
   - q: "Are there free tools to help with compound interest explained?"
     a: "Yes! Our finance-tools.freetoolkit.cc offers free calculators for budgeting, compound interest, mortgages, ROI, and more. No sign-up required."
 ---
-
-<div style="margin: 2rem 0; background: #f0fdf4; border-radius: 12px; padding: 1.2rem; border: 1px solid #bbf7d0;"><div style="font-weight: 700; font-size: 0.85rem; color: #166534; margin-bottom: 0.8rem;">$10,000 at 7% Annual Return</div><div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.4rem;"><div style="background: white; padding: 0.5rem; border-radius: 8px; text-align: center; border: 1px solid #bbf7d0;"><div style="font-size: 0.6rem; color: #6b7280;">10 yr</div><div style="font-weight: 800; color: #16a34a;">$20K</div></div><div style="background: white; padding: 0.5rem; border-radius: 8px; text-align: center; border: 1px solid #bbf7d0;"><div style="font-size: 0.6rem; color: #6b7280;">20 yr</div><div style="font-weight: 800; color: #16a34a;">$39K</div></div><div style="background: white; padding: 0.5rem; border-radius: 8px; text-align: center; border: 1px solid #bbf7d0;"><div style="font-size: 0.6rem; color: #6b7280;">30 yr</div><div style="font-weight: 800; color: #16a34a;">$76K</div></div><div style="background: #166534; padding: 0.5rem; border-radius: 8px; text-align: center;"><div style="font-size: 0.6rem; color: #bbf7d0;">40 yr</div><div style="font-weight: 800; color: white;">$150K</div></div></div></div>
 Albert Einstein reportedly called compound interest the eighth wonder of the world. Whether or not he said it, the math behind compounding is genuinely powerful.
 
 ## How It Works

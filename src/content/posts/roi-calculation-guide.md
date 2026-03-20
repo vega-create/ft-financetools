@@ -14,8 +14,6 @@ faq:
   - q: "Are there free tools to help with roi calculation guide?"
     a: "Yes! Our finance-tools.freetoolkit.cc offers free calculators for budgeting, compound interest, mortgages, ROI, and more. No sign-up required."
 ---
-
-<div style="margin: 2rem 0; background: #f8fafc; border-radius: 12px; padding: 1.2rem; border: 1px solid #e2e8f0;"><div style="font-weight: 700; font-size: 0.85rem; color: #334155; margin-bottom: 0.8rem;">Average ROI by Investment Type</div><div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.4rem;"><div style="width: 80%; background: #16a34a; padding: 0.4rem 0.6rem; border-radius: 6px; font-size: 0.75rem; font-weight: 600; color: white;">Stock Market: ~10%/yr</div></div><div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.4rem;"><div style="width: 65%; background: #3b82f6; padding: 0.4rem 0.6rem; border-radius: 6px; font-size: 0.75rem; font-weight: 600; color: white;">Real Estate: 8-12%</div></div><div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.4rem;"><div style="width: 40%; background: #f59e0b; padding: 0.4rem 0.6rem; border-radius: 6px; font-size: 0.75rem; font-weight: 600; color: white;">Savings: 4-5%</div></div><div style="display: flex; align-items: center; gap: 0.5rem;"><div style="width: 30%; background: #94a3b8; padding: 0.4rem 0.6rem; border-radius: 6px; font-size: 0.75rem; font-weight: 600; color: white;">Bonds: 3-5%</div></div></div>
 Return on Investment (ROI) is the most fundamental measure of investment performance. Every investor should understand how to calculate and interpret it.
 
 ## Basic ROI Formula

@@ -14,8 +14,6 @@ faq:
   - q: "Are there free tools to help with 50 30 20 budget rule?"
     a: "Yes! Our finance-tools.freetoolkit.cc offers free calculators for budgeting, compound interest, mortgages, ROI, and more. No sign-up required."
 ---
-
-<div style="margin: 2rem 0; background: #f8fafc; border-radius: 12px; padding: 1.2rem; border: 1px solid #e2e8f0;"><div style="font-weight: 700; font-size: 0.85rem; color: #334155; margin-bottom: 0.8rem;">50/30/20 Split — $5,000 Monthly Income</div><div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;"><div style="width: 50%; background: #3b82f6; color: white; padding: 0.5rem 0.8rem; border-radius: 8px; font-size: 0.8rem; font-weight: 600;">50% Needs — $2,500</div></div><div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;"><div style="width: 30%; background: #8b5cf6; color: white; padding: 0.5rem 0.8rem; border-radius: 8px; font-size: 0.8rem; font-weight: 600;">30% Wants — $1,500</div></div><div style="display: flex; align-items: center; gap: 0.5rem;"><div style="width: 20%; background: #10b981; color: white; padding: 0.5rem 0.8rem; border-radius: 8px; font-size: 0.8rem; font-weight: 600;">20% Save — $1,000</div></div></div>
 The 50/30/20 rule is one of the simplest budgeting frameworks. Created by Senator Elizabeth Warren, it divides after-tax income into three categories.
 
 ## 50% for Needs

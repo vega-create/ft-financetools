@@ -14,8 +14,6 @@ faq:
   - q: "Are there free tools to help with mortgage guide first time buyers?"
     a: "Yes! Our finance-tools.freetoolkit.cc offers free calculators for budgeting, compound interest, mortgages, ROI, and more. No sign-up required."
 ---
-
-<div style="margin: 2rem 0; background: #eff6ff; border-radius: 12px; padding: 1.2rem; border: 1px solid #bfdbfe;"><div style="font-weight: 700; font-size: 0.85rem; color: #1e40af; margin-bottom: 0.8rem;">Down Payment on $300K Home</div><div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem;"><div style="background: white; padding: 0.6rem; border-radius: 8px; text-align: center; border: 1px solid #bfdbfe;"><div style="font-size: 0.65rem; color: #6b7280;">3% down</div><div style="font-weight: 800; color: #2563eb;">$9,000</div><div style="font-size: 0.6rem; color: #dc2626;">+ PMI</div></div><div style="background: white; padding: 0.6rem; border-radius: 8px; text-align: center; border: 1px solid #bfdbfe;"><div style="font-size: 0.65rem; color: #6b7280;">10% down</div><div style="font-weight: 800; color: #2563eb;">$30,000</div><div style="font-size: 0.6rem; color: #f59e0b;">+ PMI</div></div><div style="background: #1e40af; padding: 0.6rem; border-radius: 8px; text-align: center;"><div style="font-size: 0.65rem; color: #bfdbfe;">20% down</div><div style="font-weight: 800; color: white;">$60,000</div><div style="font-size: 0.6rem; color: #22c55e;">No PMI ✓</div></div></div></div>
 Buying your first home is one of the biggest financial decisions you will make. Understanding mortgages helps you make an informed choice.
 
 ## Types of Mortgages
