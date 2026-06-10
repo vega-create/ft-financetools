@@ -1,15 +1,40 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import SEO from '../components/SEO.astro';
-import AdSense from '../components/AdSense.astro';
+import ToolLayout from '../layouts/ToolLayout.astro';
 import Amortization from '../components/tools/Amortization';
+
+const faq = [
+  { q: "What is an amortization schedule?", a: "An amortization schedule is a month-by-month table showing how each loan payment is split between interest and principal, plus your running loan balance. It reveals that early payments are mostly interest and late payments are mostly principal." },
+  { q: "Why is early-loan interest so high?", a: "Interest each month is calculated on the remaining balance. In month 1 of a $300K, 30-year mortgage at 6.5%, the balance is highest, so interest alone is $1,625 — over 85% of the $1,896 payment. Only $271 reduces principal. By year 20, the ratio reverses." },
+  { q: "How do extra principal payments change the schedule?", a: "Every extra dollar applied to principal permanently reduces the remaining balance — which then reduces all future interest. On a 30-year mortgage, adding just $100/month to principal can save $40,000+ in interest and shave 4 years off the term." },
+  { q: "What is the difference between amortizing and interest-only loans?", a: "Amortizing loans (standard mortgages, auto, personal) reduce principal each payment. Interest-only loans (some commercial, HELOC draws) pay only interest for a period — the principal is due at the end as a balloon. Interest-only is riskier but offers lower upfront payments." },
+  { q: "Can I see how biweekly payments change things?", a: "Biweekly payments equal 26 half-payments per year — equivalent to 13 full monthly payments instead of 12. On a 30-year mortgage, this single change typically shaves 5–7 years off the term and saves $50,000+ in interest, with only a small budget impact." },
+  { q: "Do extra payments always go to principal?", a: "Not automatically. Lenders may apply extra cash to future interest or future payments unless you specifically write 'apply to principal' on the check or use the lender's online 'principal-only payment' option. Always verify the next statement reflects your intent." },
+  { q: "How does the amortization schedule help with tax planning?", a: "Mortgage interest is tax-deductible (if you itemize). The schedule shows exactly how much interest you'll pay each year, useful for projecting deductions. The IRS Form 1098 from your lender summarizes annual interest paid for tax filing." },
+];
 ---
-<BaseLayout>
-  <SEO slot="head" title="Amortization Table" description="View full payment schedule with principal and interest." />
-  <div class="max-w-4xl mx-auto px-4 py-8">
-    <nav class="text-sm text-gray-500 mb-6"><a href="/" class="hover:text-primary-600">Home</a> <span class="mx-2">›</span> <span class="text-gray-900">Amortization Table</span></nav>
-    <h1 class="text-3xl font-bold text-gray-900 mb-6">Amortization Table</h1>
-    <Amortization client:load />
-    <AdSense slot="bottom" />
-  </div>
-</BaseLayout>
+
+<ToolLayout title="Amortization Table Calculator" description="Generate a complete month-by-month amortization schedule showing principal, interest, and remaining balance for any loan. Free 2026 amortization calculator." slug="amortization" faq={faq}>
+  <Amortization client:load slot="tool" />
+
+  <Fragment slot="tutorial">
+    <h2>How to Use the Amortization Calculator</h2>
+    <p>Enter the loan amount, interest rate, and term (in months or years). The tool generates a complete amortization schedule — one row per month — showing your payment, how much is interest, how much is principal, and the remaining loan balance. Export the schedule as CSV to use in Excel or share with your accountant.</p>
+    <p>To see the power of extra payments, enter an additional monthly principal amount. The calculator instantly recomputes the schedule, showing your shorter payoff date and total interest saved. This is the most underused trick in personal finance.</p>
+
+    <h2>Why the Schedule Looks Surprising</h2>
+    <p>Most first-time borrowers are shocked to see how much early interest they pay. On a $300,000 30-year mortgage at 6.5%, the first year's payments total $22,758 — but only $3,275 reduces the loan balance. The other $19,483 is interest. After 10 years of faithful $1,896 monthly payments ($227,500 total), you still owe $253,000 of the original $300,000. This is by design: interest accrues on the outstanding balance.</p>
+    <p>The good news: once you pass the halfway point (around year 21 of a 30-year loan), principal payments accelerate dramatically. Your final 5 years almost entirely build equity.</p>
+
+    <h2>The Math Behind the Schedule</h2>
+    <p>Each month: (1) calculate this month's interest = current balance × (annual rate ÷ 12); (2) subtract that from your fixed payment to find principal paid; (3) subtract principal from balance for next month's starting figure. Repeat for the loan's full term. The fixed payment amount is set so that the final balance hits exactly zero on the last month — the standard "amortizing" definition.</p>
+
+    <h2>Strategies to Beat the Schedule</h2>
+    <p><strong>Round up:</strong> Increase your $1,896 payment to $2,000. The extra $104 monthly cuts a 30-year mortgage to 26 years and saves $54,000 in interest. <strong>Annual lump sum:</strong> Apply your tax refund to principal once a year. A $3,000 annual lump sum shaves 5 years off a 30-year mortgage. <strong>Biweekly payments:</strong> Pay half the monthly amount every two weeks. You'll make 26 half-payments (13 full payments) per year instead of 12 — cutting 5–7 years off the term. All three strategies stack.</p>
+
+    <h2>When the Schedule Reveals a Refinance Opportunity</h2>
+    <p>Pull up your current loan's amortization. If you're still in the first half of the term and current market rates are 1%+ lower than yours, refinancing usually wins — even after closing costs. The schedule lets you compare your remaining interest under the current loan vs a new loan, dollar for dollar. Use our <a href="/mortgage-calc/">mortgage calculator</a> or <a href="/loan-calc/">loan calculator</a> to model the new loan, then compare schedules side by side.</p>
+
+    <h2>Reading Your Lender's Amortization Statement</h2>
+    <p>Most lenders provide a similar schedule on request or online. Verify three things: the starting balance matches your loan amount, the interest rate matches what you signed, and your monthly payment column totals match what you've paid. Lender errors do happen — usually in their favor. If you've made extra principal payments, confirm they appear in the principal column and reduced your remaining balance correctly.</p>
+  </Fragment>
+</ToolLayout>

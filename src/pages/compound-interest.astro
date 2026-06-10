@@ -1,15 +1,39 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import SEO from '../components/SEO.astro';
-import AdSense from '../components/AdSense.astro';
+import ToolLayout from '../layouts/ToolLayout.astro';
 import CompoundInterest from '../components/tools/CompoundInterest';
+
+const faq = [
+  { q: "What is the compound interest formula?", a: "A = P(1 + r/n)^(nt), where A is the final amount, P is the principal, r is the annual rate (decimal), n is compounding frequency per year, and t is years. For $10,000 invested at 7% compounded annually for 30 years, A = $76,123." },
+  { q: "Compound vs simple interest: how much difference?", a: "Massive over time. $10,000 at 7% simple interest for 30 years gives you $31,000 ($21,000 interest). The same money with annual compounding becomes $76,123 — more than twice as much. Daily compounding pushes it slightly higher to $81,653." },
+  { q: "What is the Rule of 72?", a: "A quick mental shortcut: years to double your money ≈ 72 ÷ interest rate. At 7%, money doubles in about 10 years (72÷7). At 10%, about 7 years. At 4%, about 18 years. The rule is most accurate for rates between 6% and 10%." },
+  { q: "Does compounding frequency really matter?", a: "Less than you'd think at moderate rates. $10,000 at 7% for 30 years: annual compounding = $76,123, monthly = $81,164, daily = $81,652. The jump from annual to monthly is meaningful (+6.6%), but monthly to daily is tiny (+0.6%). For long horizons, time and rate matter much more than frequency." },
+  { q: "How do regular contributions accelerate growth?", a: "Massively. Starting with $0 and contributing $500/month for 30 years at 7% gives you $610,000. The first year you contribute $6,000 and earn ~$200 interest. By year 25, your $6,000 annual contribution adds to a balance earning $36,000+ per year — interest dwarfs your contribution." },
+  { q: "What about inflation?", a: "Real returns matter, not nominal. If your investment earns 7% and inflation runs 3%, your real return is about 4%. Use 4–5% real returns for retirement planning to avoid overestimating your future buying power. The calculator can be set to 'real return' to bake in inflation adjustment." },
+  { q: "Why do financial advisors love compound interest?", a: "Because time is the most powerful variable. Starting at age 25 with $200/month at 7% gives $525,000 by age 65. Starting at 35 with $400/month — double the contribution — gives only $480,000. The 10-year head start beats doubling the savings rate. This is why every personal finance book begins: start now." },
+];
 ---
-<BaseLayout>
-  <SEO slot="head" title="Compound Interest Calculator" description="Calculate how your money grows with compound interest." />
-  <div class="max-w-4xl mx-auto px-4 py-8">
-    <nav class="text-sm text-gray-500 mb-6"><a href="/" class="hover:text-primary-600">Home</a> <span class="mx-2">›</span> <span class="text-gray-900">Compound Interest Calculator</span></nav>
-    <h1 class="text-3xl font-bold text-gray-900 mb-6">Compound Interest Calculator</h1>
-    <CompoundInterest client:load />
-    <AdSense slot="bottom" />
-  </div>
-</BaseLayout>
+
+<ToolLayout title="Compound Interest Calculator" description="Calculate how your money grows with compound interest over time. Free compound interest calculator with monthly contributions, multiple frequencies, and inflation adjustment." slug="compound-interest" faq={faq}>
+  <CompoundInterest client:load slot="tool" />
+
+  <Fragment slot="tutorial">
+    <h2>How to Use the Compound Interest Calculator</h2>
+    <p>Enter your starting balance (principal), annual interest rate, number of years, and compounding frequency (daily, monthly, quarterly, or annually). Optionally add a monthly contribution to model regular savings. The calculator returns your future balance, total contributions, and total interest earned — broken out so you can see exactly how compounding multiplies your money.</p>
+    <p>For realistic projections, use historical market returns: 10% nominal for the S&P 500 long-term, or about 7% real after inflation. For high-yield savings accounts in 2026, use 4–5%. For bonds, 4–5%. These conservative numbers help avoid retirement plan disappointments.</p>
+
+    <h2>The Compound Interest Magic</h2>
+    <p>Compound interest is interest earning interest. Year 1: you earn $700 on $10,000 (at 7%). Year 2: you earn $749 on $10,700. Year 3: $801. By year 30, you're earning $4,983 in a single year on a balance that has grown to $76,123. The original $10,000 has multiplied 7.6 times — without you doing anything. Albert Einstein allegedly called it "the eighth wonder of the world."</p>
+
+    <h2>Why Starting Early Beats Saving More</h2>
+    <p>Consider two savers, both retiring at 65 with 7% annual returns. Alice contributes $200/month from age 25 to 35 ($24,000 total), then stops. Bob contributes $200/month from age 35 to 65 ($72,000 total). At 65: Alice has $325,000, Bob has $244,000. Alice contributed one-third as much but ends with 33% more — because her money had 40 years to compound while Bob's had only 30. Time is the most undervalued asset in investing.</p>
+
+    <h2>Comparing Investment Vehicles</h2>
+    <p><strong>High-yield savings (HYSA):</strong> 4–5% in 2026, FDIC insured, fully liquid. Best for emergency funds. <strong>Bonds:</strong> 4–5% long-term, modest growth, lower volatility. <strong>S&P 500 index funds:</strong> 10% long-term average, high short-term volatility, ~7% real after inflation. <strong>Real estate via REITs:</strong> 8–10% long-term with income. The calculator helps you compare scenarios — but never put short-term money in volatile assets.</p>
+
+    <h2>The Inflation Reality Check</h2>
+    <p>$1,000,000 at retirement sounds great, but if inflation runs 3% annually, $1 million in 30 years has the buying power of $412,000 today. To plan realistically, use real returns (nominal minus inflation). $500/month at 7% nominal for 30 years gives $610,000 nominal — but only about $252,000 in today's dollars. Most retirement targets get inflated away unless you account for this upfront.</p>
+
+    <h2>Building Your Wealth Plan</h2>
+    <p>Three rules: (1) start now, even with $50/month — the compound math rewards time more than amount; (2) automate contributions so you can't talk yourself out of saving; (3) leave it alone — withdrawing breaks the compounding chain. Pair this calculator with our <a href="/savings-goal/">savings goal planner</a> to work backwards from a target like $1M at age 65 and see exactly what monthly contribution makes it happen. And use our <a href="/investment-return/">investment return calculator</a> to evaluate past investments objectively.</p>
+  </Fragment>
+</ToolLayout>

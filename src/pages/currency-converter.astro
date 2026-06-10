@@ -1,15 +1,34 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import SEO from '../components/SEO.astro';
-import AdSense from '../components/AdSense.astro';
+import ToolLayout from '../layouts/ToolLayout.astro';
 import CurrencyConverter from '../components/tools/CurrencyConverter';
+
+const faq = [
+  { q: "How are exchange rates determined?", a: "Major currencies (USD, EUR, JPY, GBP) trade 24/7 on the global Forex market, with rates set by supply and demand from banks, governments, businesses, and traders. Daily volume exceeds $7 trillion. Rates we display reflect the mid-market rate — the midpoint between bid and ask." },
+  { q: "Why is the rate I get at the bank or ATM different?", a: "Banks, credit cards, and currency exchange kiosks add a markup (spread) of 1–5% over the mid-market rate, plus sometimes a flat fee. A $1,000 exchange that should cost $1,000 might cost you $1,030–$1,050 in practice. Services like Wise, Revolut, and certain credit cards offer near-mid-market rates with minimal fees." },
+  { q: "What's the best way to exchange currency for travel?", a: "Three good options: (1) withdraw local cash from an ATM at your destination using a fee-free debit card (Charles Schwab refunds all ATM fees worldwide); (2) pay with a no-foreign-transaction-fee credit card (most travel cards); (3) use a multi-currency account like Wise. Avoid airport exchange kiosks — they typically charge 8–12% markup." },
+  { q: "Are exchange rates the same as currency conversion?", a: "The rate is the multiplier; conversion is the application. EUR/USD 1.08 means 1 euro = 1.08 dollars. To convert €500 to USD: 500 × 1.08 = $540. Going the other way: 500 ÷ 1.08 = €462.96. The rate is always quoted base/quote — the first currency is what you're converting from." },
+  { q: "When should I check exchange rates?", a: "For travel: check 30 days out to plan budget, then again 1 week before to time any large exchanges. For international purchases: check before clicking 'buy' if the price is in foreign currency — credit cards lock the rate at purchase time. For investing: rates matter for foreign stocks and bonds, but currency movements over years tend to smooth out for buy-and-hold investors." },
+  { q: "What is currency strength and weakness?", a: "When a currency 'strengthens', it buys more of other currencies — good for importers and travelers heading abroad, bad for exporters. When it weakens, the opposite. The US dollar strengthened sharply in 2022–2023 (good time to visit Europe and Japan); these cycles reverse over years." },
+];
 ---
-<BaseLayout>
-  <SEO slot="head" title="Currency Converter" description="Convert between major world currencies." />
-  <div class="max-w-4xl mx-auto px-4 py-8">
-    <nav class="text-sm text-gray-500 mb-6"><a href="/" class="hover:text-primary-600">Home</a> <span class="mx-2">›</span> <span class="text-gray-900">Currency Converter</span></nav>
-    <h1 class="text-3xl font-bold text-gray-900 mb-6">Currency Converter</h1>
-    <CurrencyConverter client:load />
-    <AdSense slot="bottom" />
-  </div>
-</BaseLayout>
+
+<ToolLayout title="Currency Converter" description="Convert between USD, EUR, JPY, GBP, CNY, and major world currencies. Free currency converter with real-time exchange rates for travel and international finance." slug="currency-converter" faq={faq}>
+  <CurrencyConverter client:load slot="tool" />
+
+  <Fragment slot="tutorial">
+    <h2>How to Use the Currency Converter</h2>
+    <p>Choose the currency you're converting from and the currency you want, then enter the amount. The converter returns the equivalent value at the current mid-market rate. Use the swap button to reverse the conversion direction instantly. The rates update in real time during market hours and refresh on a regular schedule when markets are closed.</p>
+
+    <h2>Understanding Mid-Market vs Retail Rates</h2>
+    <p>The mid-market rate is what banks charge each other — the "real" exchange rate. The rate you get as a consumer is always worse, padded with a spread that's pure profit for the exchange service. Airport kiosks: 8–12% spread. Hotel exchanges: 5–10%. Most banks: 2–5%. Wise and Revolut: 0.4–1%. The mid-market rate this tool shows is your benchmark — anywhere you exchange should be measured against it. If a service hides their rate behind "no fees" marketing, the spread is usually large.</p>
+
+    <h2>Getting the Best Travel Exchange</h2>
+    <p>Five rules that save 5–10% on every trip: (1) get a no-foreign-transaction-fee credit card (Chase Sapphire, Capital One Venture, and many others) and pay everything you can with it — the network rate is near mid-market; (2) carry a Charles Schwab or Fidelity debit card for ATM withdrawals — both refund foreign ATM fees; (3) when offered "pay in your home currency" at a POS terminal, ALWAYS decline — Dynamic Currency Conversion charges 4–8% extra; (4) avoid airport kiosks for anything more than emergency cash; (5) carry a small amount of local cash for taxis and tips, exchange the rest from an ATM after arrival.</p>
+
+    <h2>Currency Risk for International Investing</h2>
+    <p>When you own foreign stocks or bonds, you're betting on both the asset AND the currency. A 10% gain on a European stock can evaporate if the euro drops 10% against your home currency. Currency-hedged ETFs (ticker symbols often end in "H") remove this risk for a small fee. For long-term diversified investors, the effect roughly washes out — but for shorter horizons, it can dominate returns. Most international index funds don't hedge by default.</p>
+
+    <h2>Following Major Currency Pairs</h2>
+    <p>Four pairs cover 85% of global currency trading. <strong>EUR/USD:</strong> the world's most traded pair, sensitive to EU vs US economic strength. <strong>USD/JPY:</strong> moves on interest rate differentials and risk-off sentiment. <strong>GBP/USD:</strong> "cable", volatile around UK political events. <strong>USD/CNY:</strong> managed by China, less volatile but politically charged. Watching these pairs is enough for most travelers and small businesses to understand global currency trends. For larger purchases or business exposure, consider forward contracts to lock in today's rate for a future payment. Pair this with our <a href="/investment-return/">investment return calculator</a> to assess currency-adjusted gains on foreign holdings.</p>
+  </Fragment>
+</ToolLayout>

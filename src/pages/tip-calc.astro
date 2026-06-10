@@ -1,15 +1,34 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import SEO from '../components/SEO.astro';
-import AdSense from '../components/AdSense.astro';
+import ToolLayout from '../layouts/ToolLayout.astro';
 import TipCalc from '../components/tools/TipCalc';
+
+const faq = [
+  { q: "What is the standard tip percentage in the US?", a: "Restaurants: 18–22% of pre-tax total is standard, 15% is the bare minimum, 25%+ for exceptional service. Delivery: 15–20% with $5 minimum. Coffee shops: 10–15% on counter service. Bartenders: $1–2 per drink or 15–20% on tabs. Tip on the pre-tax amount; some people tip on post-tax which is more generous." },
+  { q: "Should I tip on the pre-tax or post-tax amount?", a: "Etiquette purists tip on pre-tax. Most people simply tip on the total at the bottom of the receipt — slightly more generous, simpler math. The difference is typically $1–3 on a $50 meal. Pick one approach and stick with it." },
+  { q: "Do I tip on takeout?", a: "Optional but appreciated — $2–5 on small orders, 10% on large orders. The kitchen prepared your food and someone packed it. For curbside pickup or food delivery (DoorDash, Uber Eats), tip the driver 15–20% with $5 minimum since they're using their own car." },
+  { q: "How do I split a bill with friends?", a: "Three approaches: (1) split evenly — fastest, fair if everyone ordered similarly; (2) itemized — each person pays for their order plus their proportional tax and tip; (3) round up — everyone contributes a slightly rounded amount, kicks the change into the tip. This calculator handles all three." },
+  { q: "What's the etiquette for tipping abroad?", a: "Highly variable. Europe: usually 5–10%, often built into the bill. Japan: tipping is rude — don't do it. Australia: not expected. Mexico: 10–15%. Always check local customs before assuming US norms apply. Hotel concierges can advise on the country you're in." },
+  { q: "Do I tip on the discount or the original price?", a: "Tip on the pre-discount amount when the server's work was the same. If you used a Groupon for $50 worth of food, tip 18–20% on $50, not on the $25 you paid. The server made and brought a $50 meal regardless of how you paid." },
+];
 ---
-<BaseLayout>
-  <SEO slot="head" title="Tip Calculator" description="Calculate tips and split bills." />
-  <div class="max-w-4xl mx-auto px-4 py-8">
-    <nav class="text-sm text-gray-500 mb-6"><a href="/" class="hover:text-primary-600">Home</a> <span class="mx-2">›</span> <span class="text-gray-900">Tip Calculator</span></nav>
-    <h1 class="text-3xl font-bold text-gray-900 mb-6">Tip Calculator</h1>
-    <TipCalc client:load />
-    <AdSense slot="bottom" />
-  </div>
-</BaseLayout>
+
+<ToolLayout title="Tip Calculator" description="Calculate tips and split bills among friends instantly. Free 2026 tip calculator with percentage presets, bill splitting, and rounding options." slug="tip-calc" faq={faq}>
+  <TipCalc client:load slot="tool" />
+
+  <Fragment slot="tutorial">
+    <h2>How to Use the Tip Calculator</h2>
+    <p>Enter the bill amount, tap your tip percentage (15%, 18%, 20%, 25%, or custom), and choose how many people are splitting. The calculator shows the tip amount, total bill, and per-person share. Toggle "Round up" to get clean per-person numbers — handy when paying with Venmo or cash.</p>
+
+    <h2>US Tipping Standards (2026)</h2>
+    <p><strong>Sit-down restaurants:</strong> 18–22% standard, 15% minimum acceptable. <strong>Buffets:</strong> 10% for water and plate clearing. <strong>Bartenders:</strong> $1–2 per drink or 18–20% on tabs. <strong>Delivery drivers:</strong> 15–20% with $5 floor. <strong>Coffee shops:</strong> $1 or 10–15% on counter service is generous; nothing is acceptable. <strong>Hairdressers:</strong> 15–20% of service cost. <strong>Hotel housekeeping:</strong> $3–5/night, left daily on the pillow with a "thank you" note. <strong>Taxi/Uber:</strong> 15–20%, or skip tip on short rides if app says optional. Tipping culture has crept upward — what was 15% standard 20 years ago is now 20%.</p>
+
+    <h2>Splitting Bills Without Drama</h2>
+    <p>The eternal restaurant problem: someone ordered a $40 steak and someone ordered a $12 salad — does the salad person pay for half? Three rules of thumb: (1) when ordering varies dramatically, split itemized; (2) when ordering is similar, split evenly; (3) when in doubt, the person who suggested the restaurant should subsidize generously. Apps like Splitwise, Venmo, and even this calculator's split mode make the math invisible — saving friendships from awkward math conversations.</p>
+
+    <h2>The Hidden Math: Service Fees and Auto-Gratuity</h2>
+    <p>Many restaurants now add an automatic 18–20% service charge for parties of 6+, or a 3–5% "kitchen support" or "health insurance" fee. Always check the bill before adding more tip — you may be double-tipping. If a service charge is listed, the server may or may not receive it (varies by restaurant), so adding a smaller additional tip ($5–10 on top) is still a kind move when service was good. For weddings, banquets, and catered events, gratuity is typically already included in the contract.</p>
+
+    <h2>Quick Mental Math Tricks</h2>
+    <p>If you don't want to pull out a calculator: divide the bill by 10 (move the decimal one place left) to get 10%, then double it for 20%. $58 bill → $5.80 is 10% → $11.60 is 20%. For 15%: take 10%, then add half of that ($5.80 + $2.90 = $8.70). For 18%: take 20%, subtract 10% of that ($11.60 − $1.16 = $10.44). For three-way splits with tip, divide the post-tip total by 3 — let one person eat the rounding error. Use our <a href="/discount-calc/">discount calculator</a> to figure pre-tip prices when you have a coupon.</p>
+  </Fragment>
+</ToolLayout>

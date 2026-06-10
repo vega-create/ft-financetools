@@ -1,15 +1,39 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import SEO from '../components/SEO.astro';
-import AdSense from '../components/AdSense.astro';
+import ToolLayout from '../layouts/ToolLayout.astro';
 import InvestmentReturn from '../components/tools/InvestmentReturn';
+
+const faq = [
+  { q: "What is ROI and how is it calculated?", a: "ROI (Return on Investment) = (Final Value − Initial Investment) ÷ Initial Investment × 100. If you bought $10,000 of a stock and sold for $13,500, ROI is 35%. Simple but doesn't account for time — a 35% return in 1 year is much better than 35% in 10 years." },
+  { q: "What is annualized return and why does it matter?", a: "Annualized return converts a total return into a yearly rate, making different investments comparable. Formula: (Final ÷ Initial)^(1/years) − 1. A 35% total return over 5 years is 6.2% annualized. Always compare investments using annualized returns, not raw totals." },
+  { q: "ROI vs IRR vs CAGR: which to use?", a: "ROI is simple total return, no time factor. CAGR (Compound Annual Growth Rate) is the annualized version — best for single lump-sum investments. IRR (Internal Rate of Return) accounts for irregular cash flows over time — best for businesses, real estate, or any investment with multiple contributions/withdrawals." },
+  { q: "Should I include dividends in my return calculation?", a: "Yes — always use total return, not just price appreciation. The S&P 500's price return averages about 7% historically, but with dividends reinvested it averages 10%. Ignoring dividends understates your real performance by 30%+ over decades." },
+  { q: "How do taxes affect investment returns?", a: "Significantly. A 10% return in a taxable account becomes about 7.5% after long-term capital gains tax (~25%). The same return in a Roth IRA stays 10%. Always compare after-tax returns when deciding between investments, and use tax-advantaged accounts (401k, IRA, Roth) first." },
+  { q: "What's a 'good' annual return?", a: "Context matters. Cash: 4–5% (HYSA) is excellent in 2026. Bonds: 4–6% is normal. Stocks: 7–10% real (after inflation) is the historical norm — beating that consistently is rare. If you're earning 20%+ on stocks, it's either a great year or a high-risk strategy that will eventually correct." },
+  { q: "Why does my actual return differ from the calculated return?", a: "Three usual reasons: (1) fees — even a 1% annual fee cuts long-term returns by 25%+; (2) trading taxes if you sell within a year (short-term capital gains taxed as ordinary income); (3) cash drag from money sitting uninvested. Index funds with sub-0.1% expense ratios minimize fee leakage." },
+];
 ---
-<BaseLayout>
-  <SEO slot="head" title="Investment Return Calculator" description="Calculate ROI and annualized returns." />
-  <div class="max-w-4xl mx-auto px-4 py-8">
-    <nav class="text-sm text-gray-500 mb-6"><a href="/" class="hover:text-primary-600">Home</a> <span class="mx-2">›</span> <span class="text-gray-900">Investment Return Calculator</span></nav>
-    <h1 class="text-3xl font-bold text-gray-900 mb-6">Investment Return Calculator</h1>
-    <InvestmentReturn client:load />
-    <AdSense slot="bottom" />
-  </div>
-</BaseLayout>
+
+<ToolLayout title="Investment Return Calculator" description="Calculate ROI, annualized returns, CAGR, and IRR for any investment. Free 2026 investment return calculator for stocks, real estate, and business projects." slug="investment-return" faq={faq}>
+  <InvestmentReturn client:load slot="tool" />
+
+  <Fragment slot="tutorial">
+    <h2>How to Use the Investment Return Calculator</h2>
+    <p>Enter the initial investment amount, the final value (current market value or sale price), and the holding period in years. The calculator returns total ROI, annualized return (CAGR), and total dollars gained. If you made multiple contributions or withdrawals during the holding period, switch to the IRR mode and enter each cash flow with its date.</p>
+    <p>For accurate results, use total value including dividends, distributions, and reinvested gains — not just the share price. Brokerage statements usually show both "price return" and "total return" — the second number is what you actually earned.</p>
+
+    <h2>ROI vs CAGR: The Critical Difference</h2>
+    <p>A stock that goes from $10 to $20 has 100% ROI. But over 10 years, that's only 7.2% annualized — barely better than a market index fund. Over 5 years, it's 14.9% annualized — solid outperformance. Over 1 year, it's 100% annualized — extraordinary. The same total return looks very different on a per-year basis. Always check both numbers before claiming success.</p>
+
+    <h2>The Hidden Cost of Fees</h2>
+    <p>A 1% annual fee sounds small. Over 30 years on a $100,000 investment growing at 8%, no fees produces $1,006,266. With 1% fees, you get $761,225. The fee cost: $245,041 — over twice the original investment. This is why low-cost index funds (typical fee 0.03–0.10%) dominate long-term portfolios. Always check expense ratios before investing.</p>
+
+    <h2>Comparing Investment Types</h2>
+    <p><strong>S&P 500 index funds:</strong> ~10% nominal historical average, ~7% real after inflation, ~6.5% after taxes. <strong>Individual stocks:</strong> Highly variable; on average, individual stock pickers underperform the index by 1–3% per year. <strong>Real estate (rental):</strong> 6–12% all-in returns including appreciation and cash flow, less liquid. <strong>Bonds:</strong> 4–5% with much lower volatility. <strong>Bitcoin/crypto:</strong> Wildly volatile — 80%+ drawdowns are normal. <strong>HYSA:</strong> 4–5% in 2026, perfectly safe.</p>
+
+    <h2>Calculating Real Estate Returns</h2>
+    <p>Real estate returns are deceptively complex. A $300,000 rental house generating $24,000/year rent looks like 8% return. But subtract property tax ($3,000), insurance ($1,200), maintenance ($3,000 average), vacancy reserve ($1,200), and management ($2,400 if outsourced) — net cash flow drops to $13,200 (4.4%). Add 3–4% annual appreciation and you're around 7–9% total return. Run scenarios through this calculator to avoid the "but my house went up $100K!" delusion that ignores 30 years of carrying costs.</p>
+
+    <h2>Tax-Adjusted Return Reality</h2>
+    <p>Long-term capital gains (held over 1 year): 0%, 15%, or 20% federal depending on income. Short-term (held under 1 year): your ordinary income tax rate, often 22–37%. Dividends: 0–20% qualified, ordinary rate for non-qualified. State taxes pile on top. A 10% nominal return becomes 7.5% after federal LTCG, then 6.8% after state taxes, then 4% real after 3% inflation. Plan with real, after-tax numbers — and use 401k, IRA, and Roth accounts aggressively to escape this tax drag. Compare your real-world results with our <a href="/compound-interest/">compound interest calculator</a> to see what alternative paths could have looked like.</p>
+  </Fragment>
+</ToolLayout>

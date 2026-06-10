@@ -1,15 +1,42 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import SEO from '../components/SEO.astro';
-import AdSense from '../components/AdSense.astro';
+import ToolLayout from '../layouts/ToolLayout.astro';
 import MortgageCalc from '../components/tools/MortgageCalc';
+
+const faq = [
+  { q: "How is a monthly mortgage payment calculated?", a: "Monthly payment = P × [r(1+r)^n] / [(1+r)^n - 1], where P is the loan principal, r is the monthly interest rate (annual rate ÷ 12), and n is the total number of monthly payments. For a $300,000 loan at 6.5% over 30 years, the monthly principal-and-interest payment is about $1,896." },
+  { q: "What costs are excluded from the basic calculation?", a: "The pure mortgage formula covers only principal and interest (P&I). Total monthly housing cost (PITI) also includes property tax, homeowner's insurance, and PMI if down payment is below 20%. Expect PITI to be 30–50% higher than P&I." },
+  { q: "Should I choose a 15-year or 30-year mortgage?", a: "A 15-year loan has a lower interest rate (typically 0.5–0.75% lower) and saves enormous interest over the life of the loan — often $100,000+ on a $300K mortgage. But the monthly payment is roughly 40–50% higher. Pick 15 if your budget allows; 30 if you need cash flow flexibility." },
+  { q: "What is PMI and how do I avoid it?", a: "Private Mortgage Insurance is required by most lenders when your down payment is under 20% of the home price. It typically adds 0.3–1.5% of the loan amount per year ($75–$375 monthly on a $300K loan). Avoid it by putting 20% down, taking a piggyback loan, or choosing lender-paid PMI (LPMI)." },
+  { q: "How does the down payment affect my mortgage?", a: "Every 1% increase in down payment reduces principal proportionally and often improves your interest rate. A 20% down payment eliminates PMI entirely. On a $400K home, the difference between 5% and 20% down can mean $400+ monthly savings even before interest considerations." },
+  { q: "When should I consider refinancing?", a: "The classic rule: refinance when current rates are at least 1% lower than your existing rate AND you plan to stay in the home long enough to recoup closing costs (usually 2–3 years). Use our <a href='/loan-calc/'>loan calculator</a> to compare scenarios." },
+  { q: "Are mortgage interest payments tax-deductible?", a: "In the US, mortgage interest on the first $750,000 of mortgage debt (for loans originated after Dec 2017) is deductible if you itemize. Most homeowners now take the standard deduction instead, which is simpler but doesn't directly reward homeownership." },
+  { q: "What credit score do I need for a good mortgage rate?", a: "Conventional loans typically require 620+, but the best rates go to scores above 760. The difference between a 680 and 760 credit score on a $300K mortgage can mean 0.5–1% higher rate, costing $100–$200 monthly and $40K–$70K over 30 years." },
+];
 ---
-<BaseLayout>
-  <SEO slot="head" title="Mortgage Calculator" description="Calculate monthly mortgage payments and total interest." />
-  <div class="max-w-4xl mx-auto px-4 py-8">
-    <nav class="text-sm text-gray-500 mb-6"><a href="/" class="hover:text-primary-600">Home</a> <span class="mx-2">›</span> <span class="text-gray-900">Mortgage Calculator</span></nav>
-    <h1 class="text-3xl font-bold text-gray-900 mb-6">Mortgage Calculator</h1>
-    <MortgageCalc client:load />
-    <AdSense slot="bottom" />
-  </div>
-</BaseLayout>
+
+<ToolLayout title="Mortgage Calculator" description="Calculate monthly mortgage payments, total interest, and amortization for any home loan. Free 2026 mortgage calculator with PMI, taxes, and insurance support." slug="mortgage-calc" faq={faq}>
+  <MortgageCalc client:load slot="tool" />
+
+  <Fragment slot="tutorial">
+    <h2>How to Use the Mortgage Calculator</h2>
+    <p>Enter the home price, your down payment percentage (or dollar amount), the loan term in years (typically 15 or 30), and the interest rate. The calculator instantly returns your monthly principal-and-interest payment. To see the full housing cost picture, add property tax (often 1–2% of home value annually), homeowner's insurance ($1,000–$2,000/year), and HOA fees if applicable.</p>
+    <p>For accurate results, get your interest rate from a real lender pre-approval rather than guessing — rates vary by credit score, loan type, and lender. The advertised "best rate" you see online is usually for borrowers with 760+ credit and 20% down.</p>
+
+    <h2>Understanding the Numbers</h2>
+    <p>A typical 30-year fixed mortgage on a $400,000 home with 20% down ($80,000) at 6.5% interest produces a $2,023 monthly payment. Over 30 years, you'll pay $728,470 total — meaning interest alone is $408,470, more than the original loan amount. This is why most experts recommend extra payments on principal whenever cash flow allows.</p>
+    <p>Compare that to a 15-year loan at 5.75%: the monthly payment jumps to $2,659 (32% higher), but total interest drops to $158,592 — a savings of $250,000. The same home, just different terms.</p>
+
+    <h2>The Real Monthly Cost: PITI Explained</h2>
+    <p>Banks calculate affordability using PITI: Principal + Interest + Taxes + Insurance. On that same $400K home, expect roughly $5,000–$6,000 in annual property tax (varies dramatically by state), $1,500 in homeowner's insurance, and $0–$200 monthly in HOA. Total monthly cost balloons from $2,023 (P&I) to about $2,725 (PITI). Mortgage lenders typically limit PITI to 28% of gross income.</p>
+
+    <h2>15-Year vs 30-Year: A Strategic Choice</h2>
+    <p>The 30-year mortgage offers cash flow flexibility — lower monthly payment frees up money for investing, emergencies, or other goals. The 15-year mortgage builds wealth aggressively by paying off your home faster and saving hundreds of thousands in interest. Smart middle path: take a 30-year mortgage but make biweekly payments (equivalent to one extra monthly payment per year). This shaves 5–7 years off the loan with minimal monthly impact.</p>
+    <p>If you go 30-year and invest the savings instead, historical S&P 500 returns of ~10% can outpace mortgage interest. But the math assumes discipline — most people who choose 30-year just spend the difference.</p>
+
+    <h2>Avoiding Costly Mortgage Mistakes</h2>
+    <p>The five biggest pitfalls: (1) stretching to qualify for the maximum loan amount instead of buying within your means; (2) ignoring closing costs (2–5% of loan amount, often $8,000–$20,000); (3) skipping mortgage points analysis — paying 1 point upfront for 0.25% rate reduction breaks even in 5–7 years; (4) not shopping multiple lenders (rates can vary by 0.5%); (5) buying with less than 20% down and paying PMI for years. Run your numbers through our <a href="/amortization/">amortization table</a> to see exactly where every dollar goes over the loan's life.</p>
+
+    <h2>When Renting Beats Buying</h2>
+    <p>Despite cultural pressure, buying isn't always smarter. If you'll move in under 5 years, the transaction costs (6% to sell, ~3% to buy) often consume any equity gained. In high-cost-of-living cities where rent is significantly cheaper than mortgages, investing the difference in index funds can outperform homeownership. Run the math through our <a href="/savings-goal/">savings goal calculator</a> to compare the two paths before committing.</p>
+  </Fragment>
+</ToolLayout>

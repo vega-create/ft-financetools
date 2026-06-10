@@ -1,15 +1,34 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import SEO from '../components/SEO.astro';
-import AdSense from '../components/AdSense.astro';
+import ToolLayout from '../layouts/ToolLayout.astro';
 import DiscountCalc from '../components/tools/DiscountCalc';
+
+const faq = [
+  { q: "How do I calculate a discount?", a: "Discount amount = Original Price × (Discount % ÷ 100). Sale price = Original − Discount. A $100 item at 25% off saves you $25, leaving a sale price of $75. The calculator handles this instantly along with any added sales tax." },
+  { q: "What does '20% off' really mean for my wallet?", a: "On a $50 item, 20% off saves $10 — you pay $40. But '20% off' marketing often follows a price hike. Always check the item's historical price using browser extensions like Honey or CamelCamelCamel before assuming the discount is real." },
+  { q: "How do stacked discounts work?", a: "Discounts multiply, they don't add. 20% off plus a 10% coupon is NOT 30% off. It's: $100 × 0.80 × 0.90 = $72. That's actually 28% off the original — close but not the same. Some retailers apply discounts in sequence; some take the bigger one only. Check the order of operations on the receipt." },
+  { q: "How do I figure out what a percentage discount equals in dollars saved?", a: "Quick mental math: 10% = move the decimal one place left ($240 → $24). 5% = half of 10%. 25% = quarter of total. 50% = half. 33% = divide by 3. Most discounts can be approximated this way without a calculator." },
+  { q: "Does sales tax apply before or after a discount?", a: "After. The discount comes off first, then tax is calculated on the discounted price. A $100 item with 20% off ($80) and 8% sales tax becomes $80 × 1.08 = $86.40. This works in your favor — discounts reduce your tax burden too." },
+  { q: "What's the difference between 'percentage off' and 'percent of'?", a: "30% OFF means you save 30% — you pay 70%. 30% OF means you pay 30% — you save 70%. The first is 'discount', the second is 'fraction'. Marketers love ambiguity; read carefully." },
+];
 ---
-<BaseLayout>
-  <SEO slot="head" title="Discount Calculator" description="Calculate sale prices and savings." />
-  <div class="max-w-4xl mx-auto px-4 py-8">
-    <nav class="text-sm text-gray-500 mb-6"><a href="/" class="hover:text-primary-600">Home</a> <span class="mx-2">›</span> <span class="text-gray-900">Discount Calculator</span></nav>
-    <h1 class="text-3xl font-bold text-gray-900 mb-6">Discount Calculator</h1>
-    <DiscountCalc client:load />
-    <AdSense slot="bottom" />
-  </div>
-</BaseLayout>
+
+<ToolLayout title="Discount Calculator" description="Calculate sale prices, savings, and stacked discounts instantly. Free 2026 discount calculator with sales tax support and percentage breakdowns." slug="discount-calc" faq={faq}>
+  <DiscountCalc client:load slot="tool" />
+
+  <Fragment slot="tutorial">
+    <h2>How to Use the Discount Calculator</h2>
+    <p>Enter the original price and discount percentage. The calculator shows the dollar amount saved and your final sale price. Add a sales tax percentage to see the total at checkout. For stacked discounts (a 20% sale plus a 10% coupon), enter the first discount, then use the resulting sale price as the new "original" for the second discount calculation.</p>
+
+    <h2>The Math Behind Discounts</h2>
+    <p>Percentages off are simple multiplication: a 25% discount means multiplying by 0.75 (1 minus 0.25). On a $200 jacket: $200 × 0.75 = $150 sale price; $200 × 0.25 = $50 saved. For 30%, multiply by 0.70; for 40%, by 0.60. The mental shortcut: take 10% (move decimal one place left), then multiply by however many "tens" you want. $200 × 30% = ($20 × 3) = $60 saved.</p>
+
+    <h2>Stacking Discounts Without Getting Fooled</h2>
+    <p>The common trap: "20% off + 15% off = 35% off!" Wrong. Discounts multiply: $100 × 0.80 × 0.85 = $68 — actually 32% off the original. The difference seems small but adds up. A 50% sale plus 20% coupon doesn't get you 70% off; it gets you 60% off. Always run the actual math through this calculator before assuming the deal is what the sign claims.</p>
+
+    <h2>Recognizing Real Deals vs Marketing Tricks</h2>
+    <p>Three classic deceptions: (1) MSRP inflation — listing a fake "regular" price to make the sale look bigger; (2) seasonal fake sales — items go on "70% off" two days after being marked up 70%; (3) anchor pricing — showing a $1,000 item next to your "$200 SALE" item to make $200 feel cheap. Browser extensions like Honey, Rakuten, and CamelCamelCamel show actual price history. If today's "sale" price is the price the item has been for 6 months, it's not really a sale.</p>
+
+    <h2>When Discounts Are Worth It</h2>
+    <p>The only good discount is one on something you would have bought anyway. Saving 50% on a $200 item you didn't need still costs you $100. The 50% sale becomes a 100% loss. Make a list of things you actually plan to buy, then watch for deals on those specific items. Black Friday, Cyber Monday, Prime Day, and end-of-season clearances are the best times for genuine markdowns on planned purchases. Use our <a href="/savings-goal/">savings goal planner</a> to redirect the money you "save" through smart shopping into actual investments.</p>
+  </Fragment>
+</ToolLayout>

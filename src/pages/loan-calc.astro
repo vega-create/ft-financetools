@@ -1,15 +1,41 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import SEO from '../components/SEO.astro';
-import AdSense from '../components/AdSense.astro';
+import ToolLayout from '../layouts/ToolLayout.astro';
 import LoanCalc from '../components/tools/LoanCalc';
+
+const faq = [
+  { q: "How are loan payments calculated?", a: "Loan payment = P × [r(1+r)^n] / [(1+r)^n - 1], where P is the loan amount, r is the monthly interest rate, and n is the total number of months. For a $25,000 auto loan at 7% over 5 years, the monthly payment is $495." },
+  { q: "What is APR and how does it differ from interest rate?", a: "Interest rate is the cost of borrowing money. APR (Annual Percentage Rate) includes the interest rate plus fees, origination costs, and other charges. APR is always equal to or higher than the interest rate, and it's the true cost number to compare loan offers fairly." },
+  { q: "Should I take a longer loan term to lower the payment?", a: "Longer terms reduce the monthly payment but dramatically increase total interest paid. A $20,000 loan at 7% costs $396/mo over 5 years ($3,761 total interest), but only $232/mo over 10 years — yet you pay $7,866 in interest. Pick the shortest term you can afford." },
+  { q: "Auto loan vs personal loan: which is cheaper?", a: "Auto loans are secured by the vehicle as collateral, so rates are lower (typically 5–9% for good credit). Personal loans are unsecured and run 8–18%. For a car purchase, always prefer an auto loan unless you have specific reasons to avoid the lien." },
+  { q: "Can I pay off a loan early without penalty?", a: "Most modern consumer loans (auto, personal, student) allow penalty-free early payoff. Some mortgages and older loans charge prepayment penalties — read the contract before signing. When prepaying, specify 'apply to principal' in writing to avoid the payment being credited as future interest." },
+  { q: "How does my credit score affect the loan rate?", a: "Credit score is the biggest single factor. Going from 620 (fair) to 760+ (excellent) can cut auto loan rates from 10% to 5%, saving thousands. Before applying for a major loan, spend 3–6 months building credit — pay all bills on time, reduce utilization below 30%, and avoid opening new accounts." },
+  { q: "What happens if I miss a loan payment?", a: "First missed payment: a late fee ($25–$40) and your credit score drops 30–80 points. After 30 days, the lender reports to credit bureaus. After 60–90 days, the loan goes into default. Always contact your lender BEFORE missing a payment — most offer hardship programs to defer payments without credit damage." },
+  { q: "Is loan refinancing worth it?", a: "Refinancing makes sense when current rates are 1%+ lower than your existing loan AND the new term doesn't dramatically extend the payoff. Use our <a href='/mortgage-calc/'>mortgage calculator</a> or this loan tool to compare scenarios. Watch for origination fees on the new loan that can eat the savings." },
+];
 ---
-<BaseLayout>
-  <SEO slot="head" title="Loan Calculator" description="Calculate payments for any type of loan." />
-  <div class="max-w-4xl mx-auto px-4 py-8">
-    <nav class="text-sm text-gray-500 mb-6"><a href="/" class="hover:text-primary-600">Home</a> <span class="mx-2">›</span> <span class="text-gray-900">Loan Calculator</span></nav>
-    <h1 class="text-3xl font-bold text-gray-900 mb-6">Loan Calculator</h1>
-    <LoanCalc client:load />
-    <AdSense slot="bottom" />
-  </div>
-</BaseLayout>
+
+<ToolLayout title="Loan Calculator" description="Calculate monthly payments, total interest, and amortization for any loan — auto, personal, student, or business. Free 2026 loan payment calculator." slug="loan-calc" faq={faq}>
+  <LoanCalc client:load slot="tool" />
+
+  <Fragment slot="tutorial">
+    <h2>How to Use the Loan Calculator</h2>
+    <p>Enter the loan amount, the annual interest rate (your lender's quoted rate, not APR), and the loan term in months or years. The calculator returns the monthly payment, total interest you'll pay over the life of the loan, and the grand total cost. Adjust the term to see how shorter or longer payoff windows change your total cost.</p>
+    <p>For most consumer loans, this calculator assumes a standard amortizing loan with fixed monthly payments — the type used for auto loans, personal loans, student loans, and mortgages. Specialty loans like interest-only, balloon, or variable-rate loans require different math and are not modeled here.</p>
+
+    <h2>The Real Cost of Borrowing</h2>
+    <p>A loan's monthly payment hides the true cost. A $30,000 auto loan at 8% over 6 years has a comfortable $526 monthly payment — but you pay $37,898 total. That's nearly $8,000 in interest, almost a quarter of the original loan. Stretch to 7 years and the monthly drops to $464, but interest balloons to $9,000. Always run the totals before signing.</p>
+
+    <h2>Auto Loans vs Personal Loans vs Student Loans</h2>
+    <p><strong>Auto loans</strong> use the vehicle as collateral, keeping rates low (5–9% for good credit). <strong>Personal loans</strong> are unsecured and rate-priced on credit alone (8–18%). <strong>Student loans</strong> (federal) have fixed legislated rates (4–7%) with income-based repayment options private loans lack. <strong>Home equity loans</strong> use your home as collateral and offer the lowest consumer rates (6–9%) but put your home at risk if you default.</p>
+    <p>For the same purchase, always prefer the secured option if available. The 3–5% rate difference compounds enormously over a 5-year loan.</p>
+
+    <h2>How Payments Are Structured</h2>
+    <p>Every loan payment splits between interest (paid first) and principal (whatever's left). In month 1 of a 60-month $20,000 loan at 7%, about $117 goes to interest and $279 to principal. By month 60, only $2 is interest and $394 is principal. This is why making extra payments in the first year saves so much more than extra payments late in the loan — early principal reductions compound across the entire remaining term.</p>
+
+    <h2>Smart Loan Strategies</h2>
+    <p>Four moves that save thousands: (1) shop at least 3 lenders — credit unions often beat banks by 0.5–1%; (2) get pre-approved before negotiating purchase price so you know your true budget; (3) make biweekly payments instead of monthly (cuts a 5-year loan to about 4 years 7 months); (4) round payments up to the next $25 — small bumps shave months off the term. The <a href="/amortization/">amortization table</a> shows exactly how extra principal payments shorten the loan and slash interest.</p>
+
+    <h2>When NOT to Take a Loan</h2>
+    <p>Skip the loan if any of these apply: you'd be borrowing to pay for normal monthly bills (a sign your budget is broken — fix that first), the item depreciates faster than you'll pay it off (negative equity trap), the loan stretches beyond the useful life of the purchase, or the monthly payment exceeds 10% of your take-home income. If you're already carrying credit card debt above 20% APR, prioritize paying that down before taking new loans. Run your numbers through our <a href="/net-worth/">net worth tracker</a> to see the full debt picture first.</p>
+  </Fragment>
+</ToolLayout>

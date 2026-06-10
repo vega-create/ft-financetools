@@ -1,15 +1,40 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import SEO from '../components/SEO.astro';
-import AdSense from '../components/AdSense.astro';
+import ToolLayout from '../layouts/ToolLayout.astro';
 import TaxEstimator from '../components/tools/TaxEstimator';
+
+const faq = [
+  { q: "What's the difference between marginal and effective tax rate?", a: "Marginal rate is the rate on your last dollar of income (your top bracket). Effective rate is your total tax divided by total income — always lower than marginal. A single filer earning $75,000 in 2026 has a 22% marginal rate but only ~13% effective rate, because the first $11,925 is taxed at 10%, the next chunk at 12%, etc." },
+  { q: "What are the 2026 federal tax brackets?", a: "For single filers: 10% up to $11,925 | 12% to $48,475 | 22% to $103,350 | 24% to $197,300 | 32% to $250,525 | 35% to $626,350 | 37% above. For married filing jointly, all thresholds roughly double. Rates apply to taxable income (after deductions), not gross income." },
+  { q: "Should I take the standard deduction or itemize?", a: "Standard deduction in 2026: $15,000 single / $30,000 married filing jointly. Itemize only if your deductions (mortgage interest, state/local tax up to $10K, charitable giving, medical above 7.5% of AGI) exceed those thresholds. About 90% of filers now take the standard deduction since 2017 tax reform." },
+  { q: "How can I legally reduce my taxes?", a: "Five high-impact moves: (1) max 401k contributions ($23,500 in 2026, $31,000 if 50+) — directly reduces taxable income; (2) HSA contributions ($4,300 single / $8,550 family) if you have HDHP — triple tax advantage; (3) traditional IRA contributions ($7,000 limit); (4) FSA for dependent care or medical; (5) tax-loss harvesting if you have taxable investments." },
+  { q: "What's the difference between a credit and a deduction?", a: "A deduction reduces taxable income — saving you your marginal rate × deduction amount. A $1,000 deduction at 22% bracket saves $220 in tax. A credit reduces tax owed dollar-for-dollar — $1,000 credit saves $1,000. Credits are much more valuable. Major credits: Child Tax Credit ($2,000/child), Earned Income Tax Credit (varies), and education credits." },
+  { q: "Will I owe taxes or get a refund?", a: "Depends on withholding. If your employer withheld more than your tax liability, you get a refund. If less, you owe. Use this estimator to compare your projected tax to your year-to-date withholding (on your pay stub) — adjust your W-4 if there's a big mismatch." },
+  { q: "When are taxes due?", a: "April 15, 2027 for tax year 2026. Estimated tax payments for self-employed and high-income filers are due quarterly: April 15, June 15, September 15, January 15. Late filing penalty: 5% of unpaid tax per month, up to 25%. Late payment penalty: 0.5% per month. File on time even if you can't pay — the penalties are very different." },
+  { q: "Do I need to pay state income tax?", a: "Depends on your state. Nine states have no income tax: Alaska, Florida, Nevada, New Hampshire, South Dakota, Tennessee, Texas, Washington, Wyoming. California's top rate is 13.3%; New York City's combined rate can hit 14.8%. This calculator handles federal only — add your state's rate separately." },
+];
 ---
-<BaseLayout>
-  <SEO slot="head" title="Income Tax Estimator" description="Estimate US federal income tax brackets." />
-  <div class="max-w-4xl mx-auto px-4 py-8">
-    <nav class="text-sm text-gray-500 mb-6"><a href="/" class="hover:text-primary-600">Home</a> <span class="mx-2">›</span> <span class="text-gray-900">Income Tax Estimator</span></nav>
-    <h1 class="text-3xl font-bold text-gray-900 mb-6">Income Tax Estimator</h1>
-    <TaxEstimator client:load />
-    <AdSense slot="bottom" />
-  </div>
-</BaseLayout>
+
+<ToolLayout title="Income Tax Estimator (2026)" description="Estimate your 2026 US federal income tax using current IRS brackets. Free tax calculator with standard deduction, common credits, and effective rate breakdown." slug="tax-estimator" faq={faq}>
+  <TaxEstimator client:load slot="tool" />
+
+  <Fragment slot="tutorial">
+    <h2>How to Use the Tax Estimator</h2>
+    <p>Enter your gross annual income, filing status (single, married filing jointly, etc.), and any major adjustments (401k contributions, HSA, traditional IRA). The calculator subtracts pre-tax adjustments, applies the standard deduction, calculates federal income tax through 2026's progressive brackets, and shows your tax owed, effective rate, and marginal rate. Use it to plan year-end moves or set realistic W-4 withholding.</p>
+    <p>This tool covers federal income tax only. Add your state's tax separately. It doesn't model self-employment tax, AMT (rare since 2017), or specialized credits — for those, consult a CPA or use TurboTax/H&R Block.</p>
+
+    <h2>Understanding Progressive Tax Brackets</h2>
+    <p>The single biggest tax myth: "I'll cross into a higher bracket and lose money on a raise." False. Only the income above each bracket threshold is taxed at the higher rate. If you earn $103,000 (single, just below the 24% bracket), and you get a $1,000 raise, that extra $1,000 is taxed at 24% — you keep $760. You don't suddenly pay 24% on the full $104,000. Always take the raise.</p>
+
+    <h2>2026 Federal Tax Bracket Reference (Single Filer)</h2>
+    <p>The first $11,925 of taxable income is taxed at 10% → $1,193. The next $36,550 ($11,926–$48,475) is taxed at 12% → $4,386. The next $54,875 ($48,476–$103,350) is taxed at 22% → $12,073. So a single filer earning $103,350 taxable income owes $17,651 federal — effective rate of 17.1%, marginal rate of 22%. Compare your situation to this baseline.</p>
+
+    <h2>The Power of Pre-Tax Contributions</h2>
+    <p>Every dollar contributed to a traditional 401k, traditional IRA, or HSA directly reduces taxable income. If you're in the 22% bracket and contribute $10,000 to your 401k, you save $2,200 in federal tax this year. Over a career, this compounds enormously — and the contributed money grows tax-deferred. A high earner in the 35% bracket maxing their 401k ($23,500) saves $8,225 annually in tax just by directing salary into retirement. Run scenarios through this estimator before signing up for benefits to see the immediate cash impact.</p>
+
+    <h2>Adjusting Your W-4 Withholding</h2>
+    <p>If you owed a big bill at tax time, you under-withheld — fix it by reducing allowances or adding extra withholding on your W-4. If you got a big refund, you over-withheld — fix it by claiming more allowances and putting that monthly cash into investments instead. Refunds aren't free money; they're an interest-free loan to the government. Use this calculator each spring to confirm your withholding matches your projected liability.</p>
+
+    <h2>Year-End Tax Planning Moves</h2>
+    <p>December is your last chance for the current year. <strong>Max your 401k:</strong> the deadline is December 31, not April 15. <strong>Tax-loss harvest:</strong> sell losing taxable investments to offset gains. <strong>Charitable giving:</strong> donate appreciated stock (avoids capital gains AND gets deduction). <strong>HSA contributions:</strong> allowed through April 15. <strong>Roth conversions:</strong> if you're in a low-income year, convert some traditional IRA to Roth and pay tax at today's lower rate. After running this calculator, schedule a 30-minute review with a CPA — they often find $1,000+ in savings opportunities for high earners. Pair with our <a href="/salary-calc/">salary calculator</a> to see your full income picture.</p>
+  </Fragment>
+</ToolLayout>

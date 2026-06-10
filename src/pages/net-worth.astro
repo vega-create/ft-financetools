@@ -1,15 +1,39 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import SEO from '../components/SEO.astro';
-import AdSense from '../components/AdSense.astro';
+import ToolLayout from '../layouts/ToolLayout.astro';
 import NetWorth from '../components/tools/NetWorth';
+
+const faq = [
+  { q: "What is net worth?", a: "Net worth = Total Assets − Total Liabilities. Assets include cash, investments, retirement accounts, home equity, vehicles, and valuable possessions. Liabilities include mortgage, student loans, credit card debt, and any money you owe. A positive number is wealth; negative means you owe more than you own." },
+  { q: "What is a good net worth by age?", a: "Rough US median benchmarks: age 25 = $40,000 | age 35 = $130,000 | age 45 = $250,000 | age 55 = $360,000 | age 65 = $410,000 | age 75 = $260,000. Top quartile is roughly 3x median. Strive to be above median for your age; aim for top quartile by 40 if financial independence is the goal." },
+  { q: "Should I include my home in net worth?", a: "Yes — but track it conservatively. Use a low estimate (the Zillow Zestimate minus 5–10%) to avoid inflating your wealth. Better yet, track two versions: liquid net worth (excluding home) and total net worth. Liquid is more useful for actual financial decisions." },
+  { q: "How often should I update my net worth?", a: "Monthly is ideal. Track the trend, not the absolute number. Even a 1–2% increase month over month puts you on track for serious wealth building. Many personal finance apps (Mint, Empower, Monarch) automate this — link your accounts and it updates daily." },
+  { q: "What's the difference between net worth and income?", a: "Income is the cash flow you earn each year. Net worth is the wealth you've accumulated. High income doesn't guarantee high net worth — many high earners spend everything. Conversely, modest earners who save consistently can build serious net worth over 30+ years. Net worth matters more for financial independence." },
+  { q: "How do I increase my net worth fastest?", a: "Two levers: increase assets (save more, invest more, choose higher-return investments) and decrease liabilities (pay off high-interest debt). The single most powerful move: max retirement accounts every year — they reduce taxes AND build assets simultaneously. Aim to save 20%+ of gross income." },
+  { q: "Does cryptocurrency count?", a: "Yes — at current market value, but mark it volatile. Bitcoin and other crypto can swing 50%+ in months. Don't let crypto inflate your net worth into a false sense of wealth. Many advisors recommend keeping crypto under 5% of net worth to limit damage from crashes." },
+];
 ---
-<BaseLayout>
-  <SEO slot="head" title="Net Worth Tracker" description="Calculate your net worth from assets and liabilities." />
-  <div class="max-w-4xl mx-auto px-4 py-8">
-    <nav class="text-sm text-gray-500 mb-6"><a href="/" class="hover:text-primary-600">Home</a> <span class="mx-2">›</span> <span class="text-gray-900">Net Worth Tracker</span></nav>
-    <h1 class="text-3xl font-bold text-gray-900 mb-6">Net Worth Tracker</h1>
-    <NetWorth client:load />
-    <AdSense slot="bottom" />
-  </div>
-</BaseLayout>
+
+<ToolLayout title="Net Worth Tracker" description="Calculate your net worth from assets and liabilities. Free 2026 net worth calculator with categorized asset and debt tracking for personal finance planning." slug="net-worth" faq={faq}>
+  <NetWorth client:load slot="tool" />
+
+  <Fragment slot="tutorial">
+    <h2>How to Use the Net Worth Tracker</h2>
+    <p>Enter each asset (checking, savings, 401k, IRA, brokerage, home equity, cars, valuable items) and each liability (mortgage, student loans, auto loans, credit cards, personal loans). The tool sums everything and shows your net worth, asset breakdown by category, and debt-to-asset ratio. Save the snapshot and update monthly to track wealth growth over time.</p>
+    <p>Use conservative values for everything. Home: Zillow Zestimate minus 10% (real selling prices vary widely from Zestimate). Car: KBB private-party value, not retail. Crypto: current price, knowing it can drop 50% next week. Personal possessions (jewelry, collectibles): only count if you'd actually sell them in an emergency.</p>
+
+    <h2>The Two Sides: Assets and Liabilities</h2>
+    <p><strong>Liquid assets</strong> (cash, brokerage, HYSA): usable immediately. <strong>Semi-liquid</strong> (401k, IRA): accessible but with tax penalties before 59½. <strong>Illiquid</strong> (home equity, business equity): can take months to convert to cash. <strong>Lifestyle assets</strong> (cars, boats, furniture): often treated as liabilities in disguise because they depreciate. <strong>Liabilities</strong> sort by interest rate: high-interest (credit cards 20%+) demands immediate attention; mortgage-level debt (6–7%) is manageable; student loans on income-based repayment can be a long-term floor.</p>
+
+    <h2>Tracking the Trend, Not the Number</h2>
+    <p>An absolute net worth of $200K means little without context — at age 25 it's exceptional, at age 60 it's behind schedule. What matters is the trajectory. A net worth growing $20K/year at age 30 puts you on track for $1M+ by 50, even with modest investment returns. Track the monthly delta and your savings rate (savings ÷ income). If you're saving 20%+ of gross income, you'll inevitably build serious wealth over 20 years.</p>
+
+    <h2>Common Net Worth Mistakes</h2>
+    <p>Five errors that distort the picture: (1) overvaluing your home by trusting Zillow — it's often 5–10% high; (2) ignoring upcoming tax bills on traditional 401k (you don't get to keep all of it); (3) counting depreciating assets (cars, electronics) at purchase price; (4) leaving out new debt you forgot about (medical bills, IRS payment plans); (5) mistaking high income for high net worth — they're independent. Run the calculation honestly, even if the number is smaller than expected. You can't fix what you won't measure.</p>
+
+    <h2>Net Worth Milestones to Aim For</h2>
+    <p>The famous formula from "The Millionaire Next Door": Expected Net Worth = (Age × Income) ÷ 10. So at age 40 earning $100K, expected net worth is $400K. Doubling that figure ($800K) puts you in PAW (Prodigious Accumulator of Wealth) territory. Half of it or less is UAW (Under Accumulator). Most people are UAWs because they spend more than they save. The remedy is automation — pay yourself first, before lifestyle expenses claim the money. Use our <a href="/savings-goal/">savings goal planner</a> to set a specific net worth target by a specific date, then work backwards into monthly contributions through our <a href="/compound-interest/">compound interest calculator</a>.</p>
+
+    <h2>Financial Independence and Net Worth</h2>
+    <p>The FIRE (Financial Independence, Retire Early) movement uses net worth × 4% rule: net worth that supports 4% withdrawal annually means you can stop working. To live on $40,000/year, you need $1,000,000 net worth. To live on $80,000/year, $2,000,000. The math is brutal but clear — every dollar saved today shortens the path. Tracking net worth monthly turns this abstract goal into a visible countdown.</p>
+  </Fragment>
+</ToolLayout>

@@ -1,15 +1,35 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import SEO from '../components/SEO.astro';
-import AdSense from '../components/AdSense.astro';
+import ToolLayout from '../layouts/ToolLayout.astro';
 import SavingsGoal from '../components/tools/SavingsGoal';
+
+const faq = [
+  { q: "How much do I need to save monthly?", a: "Depends on your goal, timeline, and interest rate. For $50,000 in 5 years at 5% interest, save $735/month. For $1,000,000 by retirement in 30 years at 7%, save $820/month. Use this calculator to work backwards from any target." },
+  { q: "What's the difference between a savings account and an investment for goals?", a: "Use savings (HYSA, CDs) for goals under 3 years — capital preservation matters more than growth. Use investments (index funds) for goals 5+ years out — historical 7% returns crush savings yields over time. The 3–5 year range is judgment territory." },
+  { q: "Should I save for an emergency fund first or invest?", a: "Emergency fund first — 3–6 months of expenses in a HYSA. Without it, the first emergency forces you to sell investments at the worst time or rack up credit card debt at 25% APR, undoing years of investment gains." },
+  { q: "What is the 50/30/20 budget rule?", a: "50% of after-tax income for needs (rent, food, utilities), 30% for wants (entertainment, dining out), 20% for savings and debt payment. Hitting 20% reliably puts most people in a strong long-term financial position by age 50." },
+  { q: "Should I prioritize debt or savings?", a: "Pay any debt above 7–8% interest before investing (you can't reliably beat that return). Keep paying minimums on lower-rate debt (mortgage, student loans) while building emergency fund and investing. High-interest credit card debt is always the top priority." },
+  { q: "How do I save for multiple goals at once?", a: "Open separate high-yield savings accounts labeled by goal (Wedding, House, Emergency, Vacation). Automate transfers right after payday. Multiple HYSAs at the same bank are usually free and let you see progress visually." },
+];
 ---
-<BaseLayout>
-  <SEO slot="head" title="Savings Goal Planner" description="Plan how much to save monthly to reach your goal." />
-  <div class="max-w-4xl mx-auto px-4 py-8">
-    <nav class="text-sm text-gray-500 mb-6"><a href="/" class="hover:text-primary-600">Home</a> <span class="mx-2">›</span> <span class="text-gray-900">Savings Goal Planner</span></nav>
-    <h1 class="text-3xl font-bold text-gray-900 mb-6">Savings Goal Planner</h1>
-    <SavingsGoal client:load />
-    <AdSense slot="bottom" />
-  </div>
-</BaseLayout>
+
+<ToolLayout title="Savings Goal Planner" description="Calculate exactly how much to save monthly to reach any financial goal — house, wedding, retirement, college, emergency fund. Free goal-based savings calculator." slug="savings-goal" faq={faq}>
+  <SavingsGoal client:load slot="tool" />
+
+  <Fragment slot="tutorial">
+    <h2>How to Use the Savings Goal Planner</h2>
+    <p>Enter your target amount, the deadline (in years or months), the expected annual return rate, and your current savings balance if any. The tool calculates the monthly contribution required to hit your goal on time. Adjust the rate to compare a high-yield savings account (4–5%) vs an index fund (7% real average).</p>
+    <p>For short-term goals (under 3 years), use a conservative 4–5% rate to match what HYSAs and short-term CDs reliably deliver. For long-term goals (5+ years) in invested accounts, use 7% real return as a planning baseline — aggressive but historically defensible.</p>
+
+    <h2>Common Savings Goals and Realistic Numbers</h2>
+    <p><strong>3-month emergency fund</strong> ($15,000 typical): save $1,250/month for 12 months in a HYSA at 4.5%. <strong>Down payment for $400K house</strong> ($80,000): save $1,260/month for 5 years at 5%, or $670/month for 10 years at 6%. <strong>Wedding</strong> ($30,000 average): save $1,400/month for 2 years. <strong>Retirement</strong> ($1,000,000 by 65 starting at 35): save $820/month at 7%. <strong>Kids' college</strong> ($120K for a 4-year public university in 18 years): save $245/month at 7% in a 529 plan.</p>
+
+    <h2>The Power of Starting Early</h2>
+    <p>To reach $500,000 at age 65 with 7% returns: starting at age 25, save $200/month ($96,000 total contributions). Starting at age 35, save $445/month ($160,000 contributions). Starting at age 45, save $1,060/month ($254,000 contributions). The same end goal costs nearly 3x more in contributions if you delay just 20 years. This is why financial advice always says "start today, not when you have more money."</p>
+
+    <h2>Where to Park Your Savings</h2>
+    <p><strong>0–1 year</strong> (cars, vacations, emergency): high-yield savings account, currently 4–5% APY. <strong>1–3 years</strong> (down payment, wedding): CDs locked in at current rates, or money market funds. <strong>3–5 years</strong> (down payment, big purchase): bond funds or balanced funds for some growth with limited volatility. <strong>5+ years</strong> (retirement, kids' college): index fund stocks for long-term growth. Match the timeline to the risk — never put down payment money in volatile stocks unless you're flexible on the timing.</p>
+
+    <h2>Making the Plan Stick</h2>
+    <p>Three habits that turn calculator math into reality: (1) automate the transfer the same day as payday, before the money hits your spending account — pay yourself first. (2) Use separate accounts labeled by goal so you can see progress and resist raiding one fund for another. (3) Review quarterly and adjust — bonuses, raises, and tax refunds should accelerate goal funding, not lifestyle creep. Combine this calculator with our <a href="/compound-interest/">compound interest calculator</a> to visualize how your money grows month by month and stay motivated to keep contributing.</p>
+  </Fragment>
+</ToolLayout>
